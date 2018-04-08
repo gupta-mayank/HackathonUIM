@@ -41,16 +41,16 @@ public class LogStatementWorker implements Runnable {
         }
     }
 
-    private synchronized String fetchThreadName() {
-
-        String threadId = logStatement.getLine().substring(logStatement.getLine().indexOf('[')+1,logStatement.getLine().lastIndexOf(']')-1);
-        if(listOfThreads.containsKey(threadId)) {
-            return listOfThreads.get(threadId);
-        }
-        else {
-            listOfThreads.put(threadId,"Thread".concat(threadNumber.toString()));
-            threadNumber.incrementAndGet();
-            return listOfThreads.get(threadId);
+    private String fetchThreadName() {
+        synchronized (listOfThreads) {
+            String threadId = logStatement.getLine().substring(logStatement.getLine().indexOf('[') + 1, logStatement.getLine().lastIndexOf(']'));
+            if (listOfThreads.containsKey(threadId)) {
+                return listOfThreads.get(threadId);
+            } else {
+                listOfThreads.put(threadId, "Thread".concat(threadNumber.toString()));
+                threadNumber.incrementAndGet();
+                return listOfThreads.get(threadId);
+            }
         }
     }
 
