@@ -8,8 +8,8 @@ public class PredictionExecutor {
 
     public static void predictionRunner() {
         ScheduledExecutorService runThis = Executors.newSingleThreadScheduledExecutor();
-        runThis.scheduleAtFixedRate(new PredictionCommitRateWorker(), 0, 10, TimeUnit.SECONDS);
+        runThis.scheduleAtFixedRate(new PredictionCommitRateWorker(), 0, 5, TimeUnit.MINUTES);
         ScheduledExecutorService runThis1 = Executors.newSingleThreadScheduledExecutor();
-        runThis1.scheduleAtFixedRate(new ProcessorPrediction(),0,1,TimeUnit.MINUTES);
+        runThis1.scheduleAtFixedRate(new ProcessorPrediction(),0,10,TimeUnit.MINUTES);
     }
 }
