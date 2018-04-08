@@ -47,7 +47,7 @@ public class DBConnection {
             ResultSet rs = statement.executeQuery(queryString);
             while(rs.next()) {
                 Integer i = Integer.valueOf(rs.getString(1));
-                PredictionCommitRateWorker.setId(i);
+               return i;
             }
         }
         catch(Exception e) {
@@ -58,6 +58,8 @@ public class DBConnection {
 
     public static synchronized boolean insertPrediction(Connection conn, PredictionTable pt) {
         try {
+            int i = DBConnection.getNextPrimaryKeyPrediction();
+            pt.setPredictionId(i+1);
             Statement statement = conn.createStatement();
             String queryString = "insert into " + Commons.PREDICTION_TABLE +
                     " VALUES (" + pt.getPredictionId()  +

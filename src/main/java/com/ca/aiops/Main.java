@@ -12,8 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        DBConnection.getNextPrimaryKeyPrediction();
-
         Runtime.getRuntime().addShutdownHook(new ShutdownHook());
 
         PredictionExecutor.predictionRunner();

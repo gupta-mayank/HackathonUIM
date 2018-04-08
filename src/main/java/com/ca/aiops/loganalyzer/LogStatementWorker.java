@@ -70,8 +70,8 @@ public class LogStatementWorker implements Runnable {
     private double fetchCommitRateSpiked() {
         String line = logStatement.getLine();
         String timeTaken = line.substring(line.indexOf("in ")+3, line.indexOf("ms")-1).trim();
-        incrementNumber.incrementAndGet();
-        return (Double.valueOf(timeTaken) / getNumberOfRowsInserted())+incrementNumber.incrementAndGet();
+        incrementNumber.set(incrementNumber.get()+10);
+        return (Double.valueOf(timeTaken) / getNumberOfRowsInserted())+(incrementNumber.get());
     }
 
     private String fetchTableName() {

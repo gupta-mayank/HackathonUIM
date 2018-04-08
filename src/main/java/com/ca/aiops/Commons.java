@@ -3,8 +3,8 @@ package com.ca.aiops;
 public class Commons {
 
     public static String Data_Table_NAME = "Data_table_2";
-    public static String DATABASE_NAME = "AIOPS_UIM";
-    public static String PREDICTION_TABLE = "prediction_tbl_3";
+    public static String DATABASE_NAME = "AIOPS_UIM_2";
+    public static String PREDICTION_TABLE = "prediction_tbl_4";
     public static double predictionValue = 50000;
 
 
